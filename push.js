@@ -6,6 +6,8 @@ const finalPost = {
   song: chosensong
 };
 
+const start = performance.now();
+
 
 const apiUrl = 'whateverAPI/get_song';
 
@@ -22,6 +24,8 @@ const request = {
 //sending
 fetch(apiUrl, request)
   .then(response => {
+    const end = performance.now();
+    const finalTime = end - start;
     if (response.ok) {
       console.log('POST request successful');
     } else {
@@ -31,3 +35,5 @@ fetch(apiUrl, request)
   .catch(error => {
     console.error('Error:', error);
   });
+
+  export {finalTime};

@@ -1,3 +1,5 @@
+import { finalTime } from "./push.js";
+
 const audio = document.getElementById('audioPlayer');
 const playBtn = document.getElementById('playBtn');
 const pauseBtn = document.getElementById('pauseBtn');
@@ -11,9 +13,7 @@ document.getElementById('finalizeButton').addEventListener('click', function() {
   spinner.classList.remove('hidden');
   setTimeout(function() {
     revealHiddenSection();
-  }, 10000); 
-  // change time to how long it takes to load song.
-
+  }, finalTime); 
 });
 
 function revealHiddenSection() {
