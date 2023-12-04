@@ -1,7 +1,9 @@
+var artists_arr;
+var songsArr;
 fetch('whateverAPI/get_all_artists')
   .then(response => response.json())
   .then(data => {
-    var artists_arr = data;
+    artists_arr = data;
     // does this work
   })
   .catch(error => {
@@ -11,12 +13,12 @@ fetch('whateverAPI/get_all_artists')
   fetch('whateverAPI/get_all_songs')
   .then(response => response.json())
   .then(data => {
-    var songs_arr = data;
+    songsArr = data;
   })
   .catch(error => {
     console.error('Error fetching songs:', error);
   });
 
 
-  
-  export { artistsArr, songsArr };
+
+  export { artists_arr, songsArr };

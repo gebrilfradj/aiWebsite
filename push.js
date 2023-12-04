@@ -11,6 +11,8 @@ const start = performance.now();
 
 const apiUrl = 'whateverAPI/get_song';
 
+const finalTime = 0;
+const audioURL = '';
 
 //setting up post
 const request = {
@@ -23,10 +25,13 @@ const request = {
 
 //sending
 fetch(apiUrl, request)
-  .then(response => {
+  .then(response => response.blob())
+    .then(blob=> {
     const end = performance.now();
-    const finalTime = end - start;
+    finalTime = end - start;
+    audioURL = URL.createObjectURL(blob);
     if (response.ok) {
+      
       console.log('POST request successful');
     } else {
       throw new Error('POST request failed');
@@ -36,4 +41,5 @@ fetch(apiUrl, request)
     console.error('Error:', error);
   });
 
-  export {finalTime};
+  export {finalTime, audioURL};
+  

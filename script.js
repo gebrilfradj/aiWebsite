@@ -1,4 +1,4 @@
-import { finalTime } from "./push.js";
+import { finalTime, audioURL } from "./push.js";
 
 const audio = document.getElementById('audioPlayer');
 const playBtn = document.getElementById('playBtn');
@@ -28,6 +28,7 @@ function revealHiddenSection() {
 
   hiddenSection.scrollIntoView({ behavior: 'smooth' });
   var audio = document.getElementById('audioPlayer');
+  audio.src = audioURL;
   audio.play();
 }
 

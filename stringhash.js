@@ -1,4 +1,4 @@
-import { artistsArr, songsArr } from "./connect.js";
+import { artists_arr, songsArr } from "./connect.js";
 var artistsArray = [...artists_arr];
 var songsArray = [...songsArr];
 

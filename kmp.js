@@ -1,6 +1,7 @@
-import { artistsArr, songsArr } from "./connect.js";
+import { artists_arr, songsArr } from "./connect.js";
 var artistsArray = [...artists_arr];
 var songsArray = [...songsArr];
+
 
 
 function computeLPSArray(pattern) {
@@ -143,5 +144,7 @@ searchInput2.addEventListener("input", function() {
     suggestions2.appendChild(noMatch2);
   }
 });
+
+document.getElementById('finalSong').textContent = chosensong;
 
 export {chosensong, chosenartist};
