@@ -103,6 +103,7 @@ searchInput.addEventListener("input", function() {
         searchInput.value = artist;
         chosenartist = artist;
         suggestions.innerHTML = ""; // Clear suggestions on click
+        selectArtist(artist);
       });
       suggestions.appendChild(suggestionItem);
     }
@@ -112,6 +113,18 @@ searchInput.addEventListener("input", function() {
     suggestions.appendChild(noMatch);
   }
 });
+
+let artistResolveFunc; // Placeholder for resolving the songPromise
+
+const artistPromise = new Promise((resolve) => {
+  artistResolveFunc = resolve;
+});
+
+function selectArtist(artist) {
+  if (artistResolveFunc) {
+    artistResolveFunc(artist);
+  }
+}
 
 const searchInput2 = document.getElementById("songsearch");
 const suggestions2 = document.getElementById("suggestions2");
@@ -135,6 +148,7 @@ searchInput2.addEventListener("input", function() {
         searchInput2.value = song;
         chosensong = song;
         suggestions2.innerHTML = ""; // Clear suggestions on click
+        selectSong(song);
       });
       suggestions2.appendChild(suggestionItem2);
     }
@@ -145,6 +159,18 @@ searchInput2.addEventListener("input", function() {
   }
 });
 
+let songResolveFunc; // Placeholder for resolving the songPromise
+
+const songPromise = new Promise((resolve) => {
+  songResolveFunc = resolve;
+});
+
+function selectSong(song) {
+  if (songResolveFunc) {
+    songResolveFunc(song);
+  }
+}
+
 document.getElementById('finalSong').textContent = chosensong;
 
-export {chosensong, chosenartist};
+export { songPromise, selectSong, artistPromise, selectArtist};

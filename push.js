@@ -1,45 +1,46 @@
-import { chosenartist, chosensong } from "./kmp.js";
+import { songPromise, selectSong, artistPromise, selectArtist} from "./kmp.js";
 //import { chosensong, chosenartist } from "./stringhash.js";
 
-const finalPost = {
-  artist: chosenartist,
-  song: chosensong
-};
+async function pushToAPI(artistPromise, songPromise) {
+  try {
+    const chosenartist = await artistPromise;
+    const chosensong = await songPromise;
 
-const start = performance.now();
+    // Rest of your code...
 
+    // Example API call
+    const finalPost = {
+      artist: chosenartist,
+      song: chosensong
+    };
 
-const apiUrl = 'whateverAPI/get_song';
+    const start = performance.now();
+    const apiUrl = 'whateverAPI/get_song';
 
-const finalTime = 0;
-const audioURL = '';
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(finalPost)
+    });
 
-//setting up post
-const request = {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json' 
-  },
-  body: JSON.stringify(finalPost)
-};
-
-//sending
-fetch(apiUrl, request)
-  .then(response => response.blob())
-    .then(blob=> {
+    const blob = await response.blob();
     const end = performance.now();
-    finalTime = end - start;
-    audioURL = URL.createObjectURL(blob);
+    const finalTime = end - start;
+    const audioURL = URL.createObjectURL(blob);
+
     if (response.ok) {
-      
       console.log('POST request successful');
+      return { finalTime, audioURL }; // Returning finalTime and audioURL
     } else {
       throw new Error('POST request failed');
     }
-  })
-  .catch(error => {
+  } catch (error) {
     console.error('Error:', error);
-  });
+    return { finalTime: 0, audioURL: '' }; // Return default values in case of error
+  }
+}
 
-  export {finalTime, audioURL};
+export default pushToAPI;
   
