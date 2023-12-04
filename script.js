@@ -40,7 +40,7 @@ pauseBtn.addEventListener('click', function() {
 });
 
 skipBtn.addEventListener('click', function() {
-  // Example: Skip forward by 10 seconds (adjust as needed)
+  
   audio.currentTime += 10;
 });
 

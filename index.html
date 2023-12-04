@@ -13,30 +13,33 @@
 
   <section class="step step1">
     <h2 class="stepstyle">Step 1: Choose AI Voice</h2>
-    <input type="text" id="searchInput" placeholder="Search for artists...">
-    <div id="suggestions"></div>
+    <input type="text" id="artistsearch" placeholder="Search for artists...">
+    <div id="suggestions1"></div>
   </section>
 
   <section class="step step2">
     <h2 class="stepstyle">Step 2: Pick a Song</h2>
     <img src = "musicnotes/note2.png" class="notes2">
 
-    <input type="text" id="songSearch" placeholder="Search for Song...">
-  </section>
+    <input type="text" id="songsearch" placeholder="Search for Song...">
+    <div id="suggestions2"></div>
+   </section>
 
   <section class="step step3">
     <button id="finalizeButton">FINALIZE</button>
+    <!--when click finalize, bring information to aidan and get api-->
     <img src = "musicnotes/newnote.png" class="notes1">
        <div class="spinner hidden"></div>
   </section>
 
   <section class="step hiddenSection">
     <h2>AI Song Complete!!</h2>
-    <p>bigger then everything</p>
-    <img src="musicnotes/yeatCover.webp" class="yeat">
-    <!--make storage for all song pictures-->
+    <p class = "nameSong">bigger then everything</p>
+    <!--replace name with name from kmp-->
+    <img src="musicnotes/picture.jpg" class="yeat">
+    
     <div class="controls">
-      <img src="musicnotes/play-icon.png.png" alt="Play" id="playBtn">
+      <img src="musicnotes/play-button.png" alt="Play" id="playBtn">
       <img src="musicnotes/real_pause.png.png" alt="Pause" id="pauseBtn">
       <img src="musicnotes/skip-forward.png.png" alt="Skip Forward" id="skipBtn">
     </div>
